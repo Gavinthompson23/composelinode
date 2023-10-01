@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  mc:
+    image: itzg/minecraft-server
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      MEMORY: 3G
+      TYPE: FABRIC
+      VIEW_DISTANCE: 32
+      LEVEL: world3
+      MOTD: welcomme!!! We dont like cows
+      MODRINTH_PROJECTS: terralith
+      
+
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      # - /home/thompson/Development/minecraft-production/mcdata-2:/data //old-path-zorinos
+      # - C:\Users\maver\Desktop\Development\minecraft-production\mcdata //forgot to add :/data endpoint
+      - C:\Users\maver\Desktop\Development\minecraft-production\mcdata:/data
+    restart: on-failure:3
